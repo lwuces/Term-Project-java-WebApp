@@ -16,6 +16,7 @@ public class HomePage extends Div{
 
     private void initcomponent() { 
         Title = new H1("Home-page") ;
+        // Test git team
         add(Title);
     }
 }
