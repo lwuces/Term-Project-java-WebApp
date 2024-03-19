@@ -68,7 +68,7 @@ public class MainView extends AppLayout {
                 LumoUtility.JustifyContent.CENTER,
                 LumoUtility.Gap.SMALL,
                 LumoUtility.Width.FULL);
-        navigation.add(createLink("Dashboard"), createLink("Management"));
+        navigation.add(createLink("Management"), createLink("Report-History"));
 
         return navigation;
     }
@@ -77,11 +77,11 @@ public class MainView extends AppLayout {
         RouterLink link = new RouterLink();
         link.add(path);
 
-        if (path.equals("Dashboard")) {
-            link.setRoute(ReportPage.class);
-        }
         if (path.equals("Management")) {
             link.setRoute(ManagePage.class);
+        }
+        if (path.equals("Report-History")) {
+            link.setRoute(ReportPage.class);
         }
 
         link.addClassNames(
