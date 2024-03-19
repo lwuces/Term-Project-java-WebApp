@@ -1,20 +1,23 @@
 package com.example.demo.ui;
 
+import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.html.H1;
-import com.vaadin.flow.component.html.H3;
+import com.vaadin.flow.component.html.H4;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouterLayout;
 import com.vaadin.flow.theme.lumo.LumoUtility.FontWeight;
+import com.vaadin.flow.theme.lumo.LumoUtility.Margin;
+import com.vaadin.flow.theme.lumo.LumoUtility.Padding;
 
 @Route(value = "Home-page", layout = MainView.class)
 public class Content extends VerticalLayout implements RouterLayout{
 
     private H1 Title;
-    private H3 SubTitle;
+    private H4 SubTitle;
     private Button btn;
     
     public Content() {
@@ -24,21 +27,35 @@ public class Content extends VerticalLayout implements RouterLayout{
     }
 
     private void initcomponent() {
-        
-        Title = new H1("Coffee - Management") ;
-        SubTitle = new H3("- Final Project Java -") ;
-        btn = new Button("let's work!") ;
+        add(
+            MainTitle(), SubTitle(), Button()
+        );
+    }
 
-        Title.getStyle().setFontWeight(FontWeight.BOLD) ;
-        
+    private Component MainTitle() {
+        Title = new H1("COFFEE<>MANAGEMENT");
+        Title.getStyle().setFontSize("75px")
+                        .setFontWeight(FontWeight.BOLD)
+                        .setMargin(Margin.NONE)
+                        .setPadding(Padding.NONE);
+        return Title ;
+    }
+
+    private Component SubTitle() {
+        SubTitle = new H4("- F i n a l P r o j e c t < J A V A > -");
+        SubTitle.getStyle().setFontSize("25px")
+                           .setMargin(Margin.NONE)
+                           .setPadding(Padding.NONE);
+        return SubTitle ;
+    }
+
+    private Component Button() {
+        btn = new Button(" let's work ! ") ;
         btn.addThemeVariants(
             ButtonVariant.LUMO_PRIMARY, 
             ButtonVariant.LUMO_LARGE
         );
-        
-        add(
-            Title, SubTitle, btn
-        );
+        return btn ;
     }
         
     private void centerComponents() {

@@ -1,11 +1,13 @@
 package com.example.demo.ui;
 
+import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.dom.Style.FontWeight;
 import com.vaadin.flow.dom.Style.Position;
 import com.vaadin.flow.dom.ThemeList;
 import com.vaadin.flow.router.Route;
@@ -25,28 +27,23 @@ public class MainView extends AppLayout {
     }
 
     private void initcomponent() {
-
-        Title = new H1("Coffee-MG");
-        Title.getStyle().setFontSize("25px")
-                .setLeft("20px")
-                .setMargin(Margin.NONE)
-                .setPosition(Position.ABSOLUTE);
-
-        HorizontalLayout navigation = getNavigation();
-        navigation.getElement();
-
-        HorizontalLayout Theme = getTheme();
-        
-        addToNavbar(Title, navigation, Theme);
+        addToNavbar(
+            Title(), navigations(), ThemeMode()
+        );
         setContent(new Content());
     }
 
-    private HorizontalLayout getTheme() {
-        HorizontalLayout theme = new HorizontalLayout();
-        theme.addClassNames(
-            LumoUtility.JustifyContent.END,
-            LumoUtility.Padding.SMALL);
+    private Component Title() {
+        Title = new H1("Coffee-MG");
+        Title.getStyle().setFontSize("25px")
+                .setLeft("17px")
+                .setFontWeight(FontWeight.BOLD)
+                .setMargin(Margin.NONE)
+                .setPosition(Position.ABSOLUTE);
+        return Title ;
+    }
 
+    private Component ThemeMode() {
         themeMode = new Button(VaadinIcon.ADJUST.create(), click -> {
             ThemeList themeList = UI.getCurrent().getElement().getThemeList();
             if (themeList.contains(Lumo.DARK)) {
@@ -54,12 +51,21 @@ public class MainView extends AppLayout {
             } else {
                 themeList.add(Lumo.DARK);
             }});
-            themeMode.addClassNames(
-                LumoUtility.BorderRadius.LARGE);
 
-        theme.add(themeMode);
+        themeMode.getStyle().setRight("12px")
+                .setMargin(Margin.NONE)
+                .setPosition(Position.ABSOLUTE);
 
-        return theme;
+        themeMode.addClassNames(
+            LumoUtility.BorderRadius.LARGE );
+
+        return themeMode ;
+    }
+
+    private Component navigations() {
+        HorizontalLayout navigation = getNavigation();
+        navigation.getElement();
+        return navigation ;
     }
 
     private HorizontalLayout getNavigation() {
