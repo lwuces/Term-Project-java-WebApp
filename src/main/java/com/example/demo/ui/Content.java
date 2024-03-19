@@ -6,11 +6,11 @@ import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.router.Route;
 
 @Route(value = "Home-page", layout = MainView.class)
-public class HomePage extends Div{
+public class Content extends Div{
 
     private H1 Title ;
 
-    public HomePage() {
+    public Content() {
         initcomponent() ;
     }
 

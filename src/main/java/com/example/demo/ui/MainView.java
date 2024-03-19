@@ -38,7 +38,7 @@ public class MainView extends AppLayout {
         HorizontalLayout Theme = getTheme();
         
         addToNavbar(Title, navigation, Theme);
-        setContent(new HomePage());
+        setContent(new Content());
     }
 
     private HorizontalLayout getTheme() {
@@ -78,7 +78,7 @@ public class MainView extends AppLayout {
         link.add(path);
 
         if (path.equals("Dashboard")) {
-            link.setRoute(DashPage.class);
+            link.setRoute(ReportPage.class);
         }
         if (path.equals("Management")) {
             link.setRoute(ManagePage.class);
