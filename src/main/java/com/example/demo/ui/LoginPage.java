@@ -1,22 +1,29 @@
 package com.example.demo.ui;
 
 import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.component.login.LoginForm;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
 
-@Route(value = "Report-page", layout = MainView.class)
+@Route(value = "login-page")
 @AnonymousAllowed
-public class ReportPage extends VerticalLayout{
+public class LoginPage extends VerticalLayout{
 
-    public ReportPage() {
-        initcomponent() ;
-        setDisplay() ;
+    private LoginForm loginForm ;
+
+    public LoginPage() {
+        initcomponent();
+        setDisplay();
     }
 
     private void initcomponent() {
+        loginForm = new LoginForm();
+        loginForm.setAction("login-page");
+
         add(
-            new H1("Report-page")
+            new H1("STUDENT <> MM"), 
+            loginForm
         );
     }
 
@@ -25,4 +32,5 @@ public class ReportPage extends VerticalLayout{
         setAlignItems(Alignment.CENTER);
         setJustifyContentMode(JustifyContentMode.CENTER);
     }
+
 }

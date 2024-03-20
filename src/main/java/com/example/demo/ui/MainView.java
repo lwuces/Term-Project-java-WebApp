@@ -12,11 +12,13 @@ import com.vaadin.flow.dom.Style.Position;
 import com.vaadin.flow.dom.ThemeList;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouterLink;
+import com.vaadin.flow.server.auth.AnonymousAllowed;
 import com.vaadin.flow.theme.lumo.Lumo;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 import com.vaadin.flow.theme.lumo.LumoUtility.Margin;
 
 @Route(value = " ")
+@AnonymousAllowed
 public class MainView extends AppLayout {
 
     private H1 Title;
@@ -34,7 +36,7 @@ public class MainView extends AppLayout {
     }
 
     private Component Title() {
-        Title = new H1("Coffee-MG");
+        Title = new H1("Student-MG");
         Title.getStyle().setFontSize("25px")
                 .setLeft("17px")
                 .setFontWeight(FontWeight.BOLD)

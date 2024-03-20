@@ -33,7 +33,7 @@ public class Content extends VerticalLayout implements RouterLayout{
     }
 
     private Component MainTitle() {
-        Title = new H1("COFFEE<>MANAGEMENT");
+        Title = new H1("STUDENT<>MANAGEMENT");
         Title.getStyle().setFontSize("75px")
                         .setFontWeight(FontWeight.BOLD)
                         .setMargin(Margin.NONE)
