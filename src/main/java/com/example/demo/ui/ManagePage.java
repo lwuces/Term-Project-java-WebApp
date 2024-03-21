@@ -1,5 +1,8 @@
 package com.example.demo.ui;
 
+import org.vaadin.crudui.crud.impl.GridCrud;
+
+import com.example.demo.backend.Student;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
@@ -16,8 +19,14 @@ public class ManagePage extends VerticalLayout{
     }
 
     private void initcomponent() {
+
+        var crud = new GridCrud<>(Student.class) ;
+        crud.getGrid().setColumns("id");
+        crud.getCrudFormFactory().setVisibleProperties("id");
+        
         add(
-            new H1("Coffee Mangement")
+            new H1("Student<>Mangement"),
+            crud
         );
     }
 

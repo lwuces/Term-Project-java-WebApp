@@ -22,6 +22,13 @@
 		<java.version>17</java.version>
 		<vaadin.version>24.3.7</vaadin.version>
 	</properties>
+	
+	<repositories>
+		<repository>
+   			<id>Vaadin Directory</id>
+   			<url>https://maven.vaadin.com/vaadin-addons</url>
+		</repository>
+	</repositories>
 
 	<!-- Replace artifactId with vaadin-core to use only free components -->
 	<dependencies>
@@ -38,11 +45,6 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
@@ -51,6 +53,11 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+   			<groupId>org.vaadin.crudui</groupId>
+   			<artifactId>crudui</artifactId>
+   			<version>7.1.0</version>
 		</dependency>
 
 		<dependency>
@@ -67,6 +74,12 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<scope>annotationProcessor</scope>
 		</dependency>
 	</dependencies>
 
