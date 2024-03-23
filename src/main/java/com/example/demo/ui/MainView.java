@@ -12,13 +12,11 @@ import com.vaadin.flow.dom.Style.Position;
 import com.vaadin.flow.dom.ThemeList;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouterLink;
-import com.vaadin.flow.server.auth.AnonymousAllowed;
 import com.vaadin.flow.theme.lumo.Lumo;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 import com.vaadin.flow.theme.lumo.LumoUtility.Margin;
 
 @Route(value = " ")
-@AnonymousAllowed
 public class MainView extends AppLayout {
 
     private H1 Title;
@@ -56,7 +54,8 @@ public class MainView extends AppLayout {
 
         themeMode.getStyle().setRight("12px")
                 .setMargin(Margin.NONE)
-                .setPosition(Position.ABSOLUTE);
+                .setPosition(Position.ABSOLUTE)
+                .setBoxShadow("0 2px 6px -1px hsla(214, 53%, 23%, 0.16), 0 8px 24px -4px hsla(214, 47%, 21%, 0.38)");
 
         themeMode.addClassNames(
             LumoUtility.BorderRadius.LARGE );
