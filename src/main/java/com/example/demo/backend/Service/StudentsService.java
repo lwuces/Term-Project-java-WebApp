@@ -1,6 +1,6 @@
 package com.example.demo.backend.Service;
 
-import java.util.Collection;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.vaadin.crudui.crud.CrudListener;
@@ -17,7 +17,7 @@ public class StudentsService implements CrudListener<Students>{
     private final StudentsRepository repository ;
     
     @Override
-    public Collection<Students> findAll() {
+    public List<Students> findAll() {
         return repository.findAll();
     }
 
