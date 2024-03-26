@@ -1,6 +1,7 @@
 package com.example.demo.backend.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 import org.vaadin.crudui.crud.CrudListener;
@@ -15,7 +16,7 @@ import lombok.RequiredArgsConstructor;
 public class StudentsService implements CrudListener<Students>{
 
     private final StudentsRepository repository ;
-    
+
     @Override
     public List<Students> findAll() {
         return repository.findAll();
@@ -34,6 +35,13 @@ public class StudentsService implements CrudListener<Students>{
     @Override
     public void delete(Students students) {
         repository.delete(students);
+    }
+
+    public List<Students> findAll(String filterText) {
+        return repository.findAll()
+                         .stream()
+                         .filter(student -> student.getStudentid().toLowerCase().contains(filterText.toLowerCase()))
+                         .collect(Collectors.toList());
     }
     
 }
