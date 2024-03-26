@@ -22,15 +22,15 @@ public class Students {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id ;
-
-    private String studentid ;
-
+    // StudentID
+    private Long studentid ;
+    // FirstName
     private String firstname ;
-
+    // LastName
     private String lastname ;
-
+    // Email
     private String email ;
-    
+    // Birth
     private LocalDate birth ;
 
 }

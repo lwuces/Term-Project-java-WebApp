@@ -40,7 +40,7 @@ public class StudentsService implements CrudListener<Students>{
     public List<Students> findAll(String filterText) {
         return repository.findAll()
                          .stream()
-                         .filter(student -> student.getStudentid().toLowerCase().contains(filterText.toLowerCase()))
+                         .filter(student -> String.valueOf(student.getStudentid()).contains(filterText))
                          .collect(Collectors.toList());
     }
     
