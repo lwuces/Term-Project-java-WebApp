@@ -54,12 +54,15 @@ public class MainView extends AppLayout {
                 themeList.add(Lumo.DARK);
             }});
 
-        themeMode.getStyle().setRight("12px")
-                .setMargin(Margin.NONE)
-                .setPosition(Position.ABSOLUTE);
+        themeMode.getStyle().setRight("0.75rem")
+                            .setPosition(Position.ABSOLUTE);
 
         themeMode.addClassNames(
-            LumoUtility.BorderRadius.LARGE );
+            LumoUtility.Margin.NONE,
+            LumoUtility.BorderRadius.LARGE,
+            LumoUtility.Background.TRANSPARENT,
+            LumoUtility.TextColor.TERTIARY
+            );
 
         return themeMode ;
     }

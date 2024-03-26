@@ -1,24 +1,31 @@
 package com.example.demo.ui;
 
-import com.vaadin.flow.component.html.H1;
+import org.vaadin.crudui.crud.impl.GridCrud;
+
+import com.example.demo.backend.Students;
+import com.example.demo.backend.Service.StudentsService;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
-
 import jakarta.annotation.security.RolesAllowed;
+import lombok.var;
 
 @Route(value = "Manage-page", layout = MainView.class)
-@RolesAllowed("ADMIN")
+@RolesAllowed("Admin")
 public class ManagePage extends VerticalLayout{
 
-    public ManagePage() {
-        initcomponent();
-        setDisplay();
-    }
+    public ManagePage(StudentsService service) {
+        
+        var crud = new GridCrud<>(Students.class, service);
 
-    private void initcomponent() {
-        add(
-            new H1("Coffee Mangement")
+        crud.getGrid().setColumns(
+            "studentid","firstname", "lastname", "email", "birth"
         );
+        crud.getCrudFormFactory().setVisibleProperties(
+            "studentid","firstname", "lastname", "email", "birth"
+        );
+        
+        add(crud);
+        setDisplay();
     }
 
     private void setDisplay() {

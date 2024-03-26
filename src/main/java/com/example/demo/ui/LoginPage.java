@@ -20,6 +20,7 @@ public class LoginPage extends VerticalLayout{
     private void initcomponent() {
         loginForm = new LoginForm();
         loginForm.setAction("login-page");
+        loginForm.setForgotPasswordButtonVisible(false);
 
         add(
             new H1("STUDENT <> MM"), 
