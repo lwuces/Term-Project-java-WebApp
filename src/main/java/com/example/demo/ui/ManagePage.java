@@ -54,6 +54,9 @@ public class ManagePage extends VerticalLayout{
             LumoUtility.Display.FLEX
         );
 
+        crud.setDeletedMessage(" -\tDelete Succes ?!\t-");
+        crud.setSavedMessage(" +\tAdd Succes ?!\t+");
+
         // Check Data Button -
         CHECKBTN();
         
