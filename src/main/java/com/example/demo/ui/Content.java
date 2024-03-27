@@ -10,6 +10,7 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouterLayout;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
+import com.vaadin.flow.theme.lumo.LumoUtility;
 import com.vaadin.flow.theme.lumo.LumoUtility.FontWeight;
 import com.vaadin.flow.theme.lumo.LumoUtility.Margin;
 import com.vaadin.flow.theme.lumo.LumoUtility.Padding;
@@ -57,6 +58,10 @@ public class Content extends VerticalLayout implements RouterLayout{
             ButtonVariant.LUMO_PRIMARY, 
             ButtonVariant.LUMO_LARGE
         );
+        btn.addClassNames(
+            LumoUtility.BoxShadow.MEDIUM
+        );
+
         return btn ;
     }
         

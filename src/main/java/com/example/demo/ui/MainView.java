@@ -105,4 +105,5 @@ public class MainView extends AppLayout {
 
         return link;
     }
+
 }
