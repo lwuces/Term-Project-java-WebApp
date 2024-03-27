@@ -1,9 +1,14 @@
 package com.example.demo.ui;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -23,6 +28,7 @@ public class MainView extends AppLayout {
 
     private H1 Title;
     private Button themeMode;
+    private Button loginButton;
 
     public MainView() {
         initcomponent();
@@ -30,7 +36,7 @@ public class MainView extends AppLayout {
 
     private void initcomponent() {
         addToNavbar(
-            Title(), navigations(), ThemeMode()
+            Title(), navigations(), ThemeMode(), loginButton()
         );
         setContent(new Content());
     }
@@ -54,7 +60,7 @@ public class MainView extends AppLayout {
                 themeList.add(Lumo.DARK);
             }});
 
-        themeMode.getStyle().setRight("0.75rem")
+        themeMode.getStyle().setRight("7.5rem")
                             .setPosition(Position.ABSOLUTE);
 
         themeMode.addClassNames(
@@ -104,6 +110,45 @@ public class MainView extends AppLayout {
         link.getStyle().setTextDecoration("none");
 
         return link;
+    }
+
+    private Component loginButton() {
+        loginButton = new Button("Login", VaadinIcon.SIGN_IN.create(), event -> {
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            if (authentication != null && authentication.getPrincipal() instanceof UserDetails) {
+
+                // User is logged in, so logout -
+                SecurityContextHolder.clearContext();
+                // Clear authentication -
+                SecurityContextHolder.getContext().setAuthentication(null); 
+                // Navigate to login page -
+                UI.getCurrent().navigate(LoginPage.class); 
+
+            } else {
+
+                // User is logged out, so navigate to login page -
+                // Navigate to LoginPage -
+                UI.getCurrent().navigate(LoginPage.class); 
+
+            }
+        });
+
+        loginButton.getStyle().setRight("0.6rem")
+                              .setPosition(Position.ABSOLUTE);
+
+        // Set Theme -
+        loginButton.addThemeVariants(
+            ButtonVariant.LUMO_PRIMARY
+        );
+    
+        // Check authentication status and update button text/icon accordingly -
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.getPrincipal() instanceof UserDetails) {
+            loginButton.setText("Logout");
+            loginButton.setIcon(VaadinIcon.SIGN_OUT.create());
+        }
+    
+        return loginButton;
     }
 
 }

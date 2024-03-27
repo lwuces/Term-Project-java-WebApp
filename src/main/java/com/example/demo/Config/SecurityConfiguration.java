@@ -19,6 +19,7 @@ public class SecurityConfiguration extends VaadinWebSecurity {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        
         // Allow anyone to access the login page
         http.authorizeHttpRequests( auth -> auth
         .requestMatchers( "/", "/login" ).permitAll()
@@ -29,7 +30,15 @@ public class SecurityConfiguration extends VaadinWebSecurity {
         .requestMatchers(new AntPathRequestMatcher("/h2-console/**"))
         .hasRole("Admin")
         );
-        
+
+        // logout configuration
+        http.logout(logout -> logout
+            .logoutUrl("/logout")
+            .logoutSuccessUrl("/")
+            .invalidateHttpSession(true)
+            .clearAuthentication(true)
+        );
+
         // Super
         super.configure(http);
         setLoginView(http, LoginPage.class);
